@@ -1,5 +1,10 @@
 # Online-Auction-Website
+An auction website built using ReactJS and Spring.
 
+
+
+
+# Database 
 --This insert for create a admin user
 
 INSERT INTO `auction`.`user`
