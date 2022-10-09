@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.app.dto.AutoBidDto;
+import com.app.model.AutoBidDto;
 
 import lombok.Data;
 

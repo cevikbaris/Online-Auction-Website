@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.app.dto.AuctionRequest;
+import com.app.model.AuctionRequest;
 import com.app.entity.Auction;
 import com.app.entity.Bid;
 import com.app.entity.Category;
@@ -90,7 +90,7 @@ public class AuctionService {
 		List<Integer> ids = auctionRepository.getIdsBiddedAuctions();//if there is a bid in auction and if there don't have buyer yet
 		
 		for(Integer id : ids) {//update all auctions. Find auction - winner user - set winner user to auction.
-			Auction auction = auctionRepository.findById(id).orElseThrow(NotFoundException::new); // TODO: 9.10.2022 exceptionsız çözlür mü 
+			Auction auction = auctionRepository.findById(id).orElseThrow(NotFoundException::new);
 			int buyerID= bidRepository.findHighestBuyerId(auction.getId());
 			User user= userService.findById(buyerID);
 			auction.setBuyer(user);
@@ -107,8 +107,7 @@ public class AuctionService {
 
 
 	public List<Auction> getMyWonAuctions(long id) {
-		int myid=(int)id; // TODO: 9.10.2022 user id neden int e çevirildi
-		return auctionRepository.getMyWonAuctions( myid);
+		return auctionRepository.getMyWonAuctions(id);
 	}
 
 	@Scheduled(fixedRate = 20*1000)

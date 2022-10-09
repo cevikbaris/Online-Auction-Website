@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.app.dto.IdentityDto;
+import com.app.model.IdentityDto;
 import com.app.entity.FileAttachment;
 import com.app.entity.IdentityFile;
 import com.app.entity.User;

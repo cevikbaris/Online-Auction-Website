@@ -1,6 +1,6 @@
 package com.app.entity;
 
-import com.app.dto.UserRequest;
+import com.app.model.UserRequest;
 import com.app.shared.UniqueUsername;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -14,7 +14,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @ToString

@@ -5,7 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.UserResponse;
+import com.app.model.UserResponse;
 import com.app.entity.User;
 import com.app.service.UserService;
 

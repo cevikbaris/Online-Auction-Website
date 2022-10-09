@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAuctions, getCategories, getByCategory } from '../Api/ApiCalls';
+import { getAuctions, getCategories } from '../Api/ApiCalls';
 import Product from '../Components/Product';
 import './homepage.css';
 import Spinner from '../Components/Spinner';

@@ -9,9 +9,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import com.app.dto.UserResponse;
-import com.app.dto.UserUpdateRequest;
-import com.app.dto.UserRequest;
+import com.app.model.UserResponse;
+import com.app.model.UserUpdateRequest;
+import com.app.model.UserRequest;
 import com.app.entity.User;
 import com.app.service.UserService;
 import com.app.shared.GenericResponse;

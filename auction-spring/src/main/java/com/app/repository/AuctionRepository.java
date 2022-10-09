@@ -39,7 +39,7 @@ public interface AuctionRepository extends JpaRepository<Auction, Integer> {
 
 
 	@Query(value="SELECT * FROM auction.auction_table where buyer_id=:id",nativeQuery = true)
-	List<Auction> getMyWonAuctions(@Param("id") int id);
+	List<Auction> getMyWonAuctions(@Param("id") long id);
 	
 
 	@Query(value="SELECT * FROM auction.auction_table WHERE  end_date>now() " ,nativeQuery = true)

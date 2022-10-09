@@ -1,6 +1,6 @@
 package com.app.entity;
 
-import com.app.dto.AuctionRequest;
+import com.app.model.AuctionRequest;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -9,7 +9,6 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Getter
 @Setter

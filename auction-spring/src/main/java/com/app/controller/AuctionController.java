@@ -2,9 +2,11 @@ package com.app.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.app.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -16,10 +18,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.AuctionRequest;
-import com.app.dto.AuctionResponse;
-import com.app.dto.BidRequest;
-import com.app.dto.BidResponse;
 import com.app.entity.Auction;
 import com.app.entity.Bid;
 import com.app.entity.User;
@@ -54,12 +52,11 @@ public class AuctionController {
 	}
 	
 	@GetMapping("/auction/{id}")
-	public AuctionResponse getAuction (@PathVariable int id) {
-		AuctionResponse auctionResponse =new AuctionResponse(auctionService.findById(id));
+	public AuctionDetailsResponse getAuction (@PathVariable int id) {
+		AuctionDetailsResponse auctionResponse =new AuctionDetailsResponse(auctionService.findById(id));
 		User user=userService.getUserOfAuction(id);
 		auctionResponse.setUsername(user.getUsername());
 		auctionResponse.setName(user.getName());
-		//auctionReturnVM.setCreator(user);
 		return auctionResponse;
 	}
 	
@@ -69,47 +66,12 @@ public class AuctionController {
 		return auctions.map(AuctionResponse::new);
 	}
 	
-	
-	@GetMapping("/category/auction/{categoryName}")
-	public Page<AuctionResponse> getAuctionsByCategory (Pageable page, @PathVariable("categoryName") String categoryName){
-		
 
-		List<Integer> auctionIds= categoryRepository.getAuctionsByCategoryName(categoryName);
-		List<Auction> auctions = new ArrayList<>() ;
-		
-		if(auctionIds.isEmpty()) {
-			return null;
-		}else {
-			for(Integer id : auctionIds) {
-				auctions.add(auctionService.findById(id));
-			}
-			List<AuctionResponse> auctionReturnVMs = new ArrayList<>();
-			if(!auctions.isEmpty()) {
-				for(Auction auction : auctions) {
-					auctionReturnVMs.add(new AuctionResponse(auction));
-				}
-			}
-			Page<AuctionResponse> auctionReturnVM = new PageImpl<>(auctionReturnVMs);
-			return auctionReturnVM;
-		}
-
-	}
-	
 	@GetMapping("/auction/user/{username}")
 	public Page<AuctionResponse> getAuctionOfUser (@PathVariable String username){
-		
 		User user =userService.getByUsername(username);
 		List<Auction> auctions = auctionService.getUserAuctions(user.getId());
-
-		List<AuctionResponse> auctionResponseList = new ArrayList<>();
-
-		// TODO: 9.10.2022 bu stream kullanımı doğru mu test et
-		//auctionResponseList= auctions.stream().map(AuctionResponse::new).collect(Collectors.toList());
-
-		for(Auction auction : auctions) {
-			auctionResponseList.add(new AuctionResponse(auction));
-		}
-
+		List<AuctionResponse> auctionResponseList= auctions.stream().map(AuctionResponse::new).collect(Collectors.toList());
 		return new PageImpl<>(auctionResponseList);
 	}
 	
@@ -160,30 +122,28 @@ public class AuctionController {
 		
 		List<Auction> auctions = auctionService.getMyWonAuctions(myUser.getId());
 		if(auctions.isEmpty()) {
-			return null; 
+			return null; // TODO: 10.10.2022 boş response dönüyor
 		}
-		List<AuctionResponse> auctionReturnVM = new ArrayList<AuctionResponse>();
-		for(Auction auction : auctions) {
-			auctionReturnVM.add(new AuctionResponse(auction));
-		}
-		return auctionReturnVM;
+		List<AuctionResponse> auctionResponseList = new ArrayList<>();
+		auctions.forEach(auction -> auctionResponseList.add(new AuctionResponse(auction)));
+		return auctionResponseList;
 	}
 	
 	@PutMapping("/auction/buy-now")
-	BidResponse buyAuctionNow (@RequestBody BidRequest bidSubmitVM) {
+	BidResponse buyAuctionNow (@RequestBody BidRequest bidRequest) {
 		
-		User buyer = userService.getByUsername(bidSubmitVM.getBuyerUsername());
-		Auction auction = auctionService.findById(bidSubmitVM.getAuctionID());
-		auctionService.buyNow( auction.getId(), bidSubmitVM.getBidTime(), buyer.getId());
+		User buyer = userService.getByUsername(bidRequest.getBuyerUsername());
+		Auction auction = auctionService.findById(bidRequest.getAuctionID());
+		auctionService.buyNow( auction.getId(), bidRequest.getBidTime(), buyer.getId());
 		//save to bid table to see last bidder in page 
 		Bid newBid = new Bid();
 		newBid.setAuction(auction);
 		newBid.setBidder(buyer);
-		newBid.setPrice(bidSubmitVM.getPrice());
-		newBid.setBidTime(bidSubmitVM.getBidTime());
+		newBid.setPrice(bidRequest.getPrice());
+		newBid.setBidTime(bidRequest.getBidTime());
 		bidRepository.save(newBid);
 		
-		return new BidResponse(bidSubmitVM.getPrice(), buyer.getName(), buyer.getUsername());
+		return new BidResponse(bidRequest.getPrice(), buyer.getName(), buyer.getUsername());
 	}
 		
 }

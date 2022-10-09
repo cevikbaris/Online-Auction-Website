@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.AutoBidDto;
+import com.app.model.AutoBidDto;
 import com.app.entity.AutomaticBid;
 import com.app.entity.User;
 import com.app.repository.AutomaticBidRepository;
