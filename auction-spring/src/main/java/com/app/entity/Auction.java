@@ -1,30 +1,20 @@
 package com.app.entity;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Min;
-
-import com.app.dto.AuctionDto;
+import com.app.dto.AuctionRequest;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import lombok.Data;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "auction_table")
 public class Auction {
@@ -51,15 +41,13 @@ public class Auction {
 	private int sellNowPrice;
 	
     @Column(nullable = false)
-	private int startPrice;
+	private int price;
 
 
-	@Min(1)
 	@Column(nullable=false)
 	private int minimumIncrease;
 	
-    //------------------------
-    
+
 	@OneToOne(mappedBy = "auction",
 			cascade = CascadeType.ALL)
 	private FileAttachment fileAttachment;
@@ -71,6 +59,7 @@ public class Auction {
 	
 	@OneToMany(mappedBy = "auction", cascade = CascadeType.ALL)
 	@JsonManagedReference(value="selling-item")
+	@ToString.Exclude
 	private List<Bid> bids;
 	
 	
@@ -85,15 +74,27 @@ public class Auction {
 	//@JsonBackReference(value="buyer")
 	private User buyer;
 	
-	public Auction(AuctionDto auctionVM) {
-		this.explanation=auctionVM.getExplanation();
-		this.title=auctionVM.getTitle();
-		this.startDate=auctionVM.getStartDate();
-		this.endDate=auctionVM.getEndDate();
-		this.sellNowPrice=auctionVM.getSellNowPrice();
-		this.startPrice=auctionVM.getStartPrice();
-		this.minimumIncrease=auctionVM.getMinimumIncrease();
+	public Auction(AuctionRequest auctionRequest) {
+		this.explanation=auctionRequest.getExplanation();
+		this.title=auctionRequest.getTitle();
+		this.startDate=auctionRequest.getStartDate();
+		this.endDate=auctionRequest.getEndDate();
+		this.sellNowPrice=auctionRequest.getSellNowPrice();
+		this.price =auctionRequest.getStartPrice();
+		this.minimumIncrease=auctionRequest.getMinimumIncrease();
 	}
-	
-	public Auction() {}
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+		Auction auction = (Auction) o;
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
+	}
 }

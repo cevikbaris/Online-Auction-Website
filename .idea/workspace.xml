@@ -4,7 +4,192 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3ba4d85-20ed-410b-acf5-b1e6951cf5ea" name="Changes" comment="" />
+    <list default="true" id="e3ba4d85-20ed-410b-acf5-b1e6951cf5ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/auction-reactjs/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/AuctionApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/auction/Auction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/auction/AuctionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/auction/AuctionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/auction/AuctionReturnVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/auction/AuctionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/auction/AuctionVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/auth/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/AutoBidVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/AutomaticBid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/AutomaticBidRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/Bid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/BidController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/BidRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/BidService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/BidSubmitVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/bid/BidSuccess.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/category/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/category/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/category/CategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/category/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/configuration/AppConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/configuration/AuthEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/configuration/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/configuration/UserAuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/configuration/WebConfigurer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/configuration/WebSocketConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/error/ApiError.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/error/ErrorHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/error/NotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/FileAttachment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/FileAttachmentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/FileAttachmentVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/FileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/IdentityFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/IdentityFileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/file/IdentityVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/message/ChatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/message/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/message/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/role/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/role/RoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/shared/CurrentUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/shared/EmailValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/shared/FileType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/shared/FileTypeValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/shared/GenericResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/shared/MailNotification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/shared/ValidEmail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/UniqueUsername.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/UniqueUsernameValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/UserWithoutRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/vm/UserUpdateVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/java/com/app/auction/user/vm/UserVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/META-INF/maven/com.app/auction/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/META-INF/maven/com.app/auction/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/AuctionApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/AuctionApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/AuctionApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/auction/Auction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/auction/AuctionController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/auction/AuctionRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/auction/AuctionReturnVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/auction/AuctionService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/auction/AuctionVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/auth/AuthController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/AutoBidVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/AutomaticBid.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/AutomaticBidRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/Bid.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/BidController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/BidRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/BidService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/BidSubmitVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/bid/BidSuccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/category/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/category/CategoryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/category/CategoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/category/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/configuration/AppConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/configuration/AuthEntryPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/configuration/SecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/configuration/UserAuthService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/configuration/WebConfigurer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/configuration/WebSocketConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/error/ApiError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/error/ErrorHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/error/NotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/FileAttachment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/FileAttachmentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/FileAttachmentVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/FileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/FileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/IdentityFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/IdentityFileRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/file/IdentityVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/message/ChatController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/message/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/message/Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/role/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/role/RoleRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/shared/CurrentUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/shared/EmailValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/shared/FileType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/shared/FileTypeValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/shared/GenericResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/shared/MailNotification.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/shared/ValidEmail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/UniqueUsername.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/UniqueUsernameValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/UserWithoutRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/vm/UserUpdateVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/auction/user/vm/UserVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/AppConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/AppConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/AuthEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/AuthEntryPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/UserAuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/UserAuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/WebConfigurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/WebConfigurer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/WebSocketConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/configuration/WebSocketConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/AuctionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/AuctionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/BidController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/BidController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/FileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/FileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/AuctionDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/AuctionDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/AuctionReturnDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/AuctionReturnDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/AutoBidDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/AutoBidDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/BidSubmitDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/BidSubmitDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/BidSuccessDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/BidSuccessDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/FileAttachmentDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/FileAttachmentDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/IdentityDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/IdentityDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/UserDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/UserUpdateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/UserUpdateDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/UserWithoutRoleDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/dto/UserWithoutRoleDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Auction.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Auction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/AutomaticBid.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/AutomaticBid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Bid.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Bid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/FileAttachment.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/FileAttachment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/IdentityFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/IdentityFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/error/ApiError.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/error/ApiError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/error/ErrorHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/error/ErrorHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/error/NotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/error/NotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/message/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/message/ChatController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/message/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/message/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/message/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/message/Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/AuctionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/AuctionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/AutomaticBidRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/AutomaticBidRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/BidRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/BidRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/CategoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/FileAttachmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/FileAttachmentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/IdentityFileRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/IdentityFileRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/RoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/RoleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/AuctionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/AuctionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/BidService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/BidService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/CategoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/FileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/FileService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/MailNotificationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/MailNotificationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/EmailValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/EmailValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/FileType.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/FileType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/FileTypeValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/FileTypeValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/GenericResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/GenericResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/UniqueUsername.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/UniqueUsername.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/UniqueUsernameValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/UniqueUsernameValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/ValidEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/auction-spring/target/classes/com/app/shared/ValidEmail.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +201,9 @@
         <option value="UML Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -42,7 +230,7 @@
     <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reentrantlock-example" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

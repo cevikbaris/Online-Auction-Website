@@ -12,14 +12,16 @@ import org.springframework.stereotype.Repository;
 
 import com.app.entity.User;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	User findByUsername(String username);
+	Optional<User> findByUsername(String username);
 	
 	Page<User> findByUsernameNot(String username, Pageable page);
 	
-	User findById(long id);
+	//User findById(long id);
 
 	@Modifying
 	@Transactional

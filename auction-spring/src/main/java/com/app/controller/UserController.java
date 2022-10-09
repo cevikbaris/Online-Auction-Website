@@ -9,11 +9,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import com.app.dto.UserDto;
-import com.app.dto.UserUpdateDto;
-import com.app.dto.UserWithoutRoleDto;
+import com.app.dto.UserResponse;
+import com.app.dto.UserUpdateRequest;
+import com.app.dto.UserRequest;
 import com.app.entity.User;
-import com.app.repository.RoleRepository;
 import com.app.service.UserService;
 import com.app.shared.GenericResponse;
 
@@ -22,49 +21,45 @@ import javax.validation.Valid;
 
 @RestController
 public class UserController {
-	
-	
+
 	@Autowired
-	UserService userService;
-	
-	@Autowired
-	RoleRepository roleRepository;
+	private UserService userService;
+
 	
 	@PostMapping("/users") 
-	GenericResponse createUser(@Valid @RequestBody UserWithoutRoleDto userWithoutRole) {
+	GenericResponse createUser(@Valid @RequestBody UserRequest userWithoutRole) {
 		userService.save(userWithoutRole);
 		return new GenericResponse("User created");
 	}
 	
 	@GetMapping("/users") //without logged in user
-	Page<UserDto> getUsers(Pageable page, Authentication authentication){
+	Page<UserResponse> getUsers(Pageable page, Authentication authentication){
 		User user=userService.getByUsername(authentication.getName());
-		return userService.getUsers(page,user).map(UserDto::new);
+		return userService.getUsers(page,user).map(UserResponse::new);
 	}
 	
 	@GetMapping("/users/{username}")
-	UserDto getUser(@PathVariable String username) {
-		return new UserDto(userService.getByUsername(username));
+	UserResponse getUser(@PathVariable String username) {
+		return new UserResponse(userService.getByUsername(username));
 	}
 
 	@PutMapping("/users/{username}")
 	@PreAuthorize("#username == principal.username")
-	UserDto updateUser(@Valid @RequestBody UserUpdateDto updatedUser, @PathVariable String username) {
-		User user = userService.updateUser(username, updatedUser);
-		return new UserDto(user);
+	UserResponse updateUser(@Valid @RequestBody UserUpdateRequest updatedUser, @PathVariable String username) {
+		return new UserResponse(userService.updateUser(username, updatedUser));
 
 	}
 	
 	@PutMapping("/users/update/{userid}")
 	@Secured("ROLE_ADMIN")
 	ResponseEntity<?> approveUser(@PathVariable long userid) {
-		 	
+		// TODO: 9.10.2022 try catch gerekli mi
 		try{
 			userService.updateUserIsApproved(userid);
 			userService.deleteIdentityByUserId(userid);
 			return ResponseEntity.ok().body("User is approved successfully.");
 		}catch (Exception e) {
-			System.out.println(e.toString());
+			e.printStackTrace();
 			return ResponseEntity.badRequest().body("User authentication failed ");
 		}
 	

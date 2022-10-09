@@ -1,26 +1,18 @@
 package com.app.entity;
 
+import lombok.*;
+import org.hibernate.Hibernate;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
-
-import lombok.Data;
-
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
-@Table(uniqueConstraints={ //user cant bid same price for auction
+@Table(uniqueConstraints={ //user can't bid same price for auction
 	    @UniqueConstraint(columnNames = {"auction_id", "price"}) 
 	}) 
 public class Bid {
@@ -46,10 +38,21 @@ public class Bid {
 	private Date bidTime;
 	
 	
-	@NotNull
     @Column(nullable = false)
 	private int price;
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+		Bid bid = (Bid) o;
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
+	}
 }
 
 

@@ -1,16 +1,17 @@
 package com.app.service;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Optional;
 
+import com.app.repository.AuctionRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.app.dto.UserUpdateDto;
-import com.app.dto.UserWithoutRoleDto;
+import com.app.dto.UserUpdateRequest;
+import com.app.dto.UserRequest;
 import com.app.entity.User;
 import com.app.error.NotFoundException;
 import com.app.repository.IdentityFileRepository;
@@ -21,30 +22,27 @@ import com.app.repository.UserRepository;
 @Service
 public class UserService {
 	
-	UserRepository userRepository;
-	
-	PasswordEncoder passwordEncoder;
-	
-	RoleRepository roleRepository;
-	
-	FileService fileService;
-	
-	IdentityFileRepository identityFileRepository;
-	
-	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,RoleRepository roleRepository,
-					   FileService fileService, IdentityFileRepository identityFileRepository) {
+	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
+	private final RoleRepository roleRepository;
+	private final FileService fileService;
+	private final IdentityFileRepository identityFileRepository;
+	private final AuctionRepository auctionRepository;
+
+	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository,
+					   FileService fileService, IdentityFileRepository identityFileRepository, AuctionRepository auctionRepository) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.roleRepository = roleRepository;
 		this.fileService = fileService;
 		this.identityFileRepository=identityFileRepository;
+		this.auctionRepository = auctionRepository;
 	}
 
-	public void save(UserWithoutRoleDto userWithoutRole) {
+	public void save(UserRequest userWithoutRole) {
 		User user = new User(userWithoutRole);
 		user.setPassword(this.passwordEncoder.encode(userWithoutRole.getPassword()));
-		user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
-
+		user.setRoles(Collections.singletonList(roleRepository.findByName("ROLE_USER")));
 		userRepository.save(user);
 	}
 
@@ -56,15 +54,13 @@ public class UserService {
 	}
 
 	public User getByUsername( String username) {
-		User user =userRepository.findByUsername(username);
-		if(user ==null) {
-			throw new NotFoundException();//get 404 not fund
-		}
-		return user;
+		return userRepository.findByUsername(username).orElseThrow(NotFoundException::new);
+
 	}
 
-	public User updateUser(String username, UserUpdateDto updatedUser) {
-		User user = userRepository.findByUsername(username);
+	public User updateUser(String username, UserUpdateRequest updatedUser) {
+		Optional<User> optionalUser = userRepository.findByUsername(username);
+		User user= optionalUser.orElseThrow(NotFoundException::new);
 		user.setName(updatedUser.getName());
 		if(updatedUser.getImage()!=null) {
 			String oldImageName = user.getImage();
@@ -80,20 +76,16 @@ public class UserService {
 		
 	}
 
-	public User findById(int buyerId) {
-		User user =userRepository.findById(buyerId);
-		return user;
-		
+	public User getUserOfAuction(int id) {
+		String username = auctionRepository.usernameOfAuctionOwner(id);
+		return getByUsername(username);
 	}
+
 	public User findById(long buyerId) {
-		long id=buyerId;
-		User user =userRepository.findById(id);
-		return user;
-		
+		return userRepository.findById(buyerId).orElseThrow(NotFoundException::new);
 	}
 
 	public void updateUserIsApproved(long userid) {
-		System.out.println(userid);
 		 userRepository.updateUserApproved(userid);
 	}
 

@@ -1,6 +1,7 @@
 package com.app.configuration;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
@@ -25,9 +26,9 @@ public class UserAuthService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByUsername(username); //my user implements UserDetails it can return
-		 if(user != null && user.isEnabled()){
-			return  buildUserForAuthentication(user, mapRolesToAuthorities(user.getRoles()));
+		Optional<User> user = userRepository.findByUsername(username); //my user implements UserDetails it can return
+		 if(user.isPresent() && user.get().isEnabled()){
+			return  buildUserForAuthentication(user.get(), mapRolesToAuthorities(user.get().getRoles()));
 		}else {
 			throw new UsernameNotFoundException("User not found");
 		}

@@ -1,11 +1,6 @@
 package com.app.service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.app.dto.AuctionDto;
+import com.app.dto.AuctionRequest;
 import com.app.entity.Auction;
 import com.app.entity.Bid;
 import com.app.entity.Category;
@@ -24,7 +19,6 @@ import com.app.entity.User;
 import com.app.error.NotFoundException;
 import com.app.repository.AuctionRepository;
 import com.app.repository.BidRepository;
-import com.app.repository.CategoryRepository;
 import com.app.repository.FileAttachmentRepository;
 
 @Service
@@ -49,22 +43,21 @@ public class AuctionService {
 	@Autowired
 	CategoryService categoryService;
 	
-	public int save( AuctionDto auctionVM, User owner) {
-		Auction auction = new Auction(auctionVM);
+	public int save(AuctionRequest auctionRequest, User owner) {
+		Auction auction = new Auction(auctionRequest);
 		auction.setCreator(owner);
-		Category category = categoryService.findById(auctionVM.getCategory());
+		Category category = categoryService.findById(auctionRequest.getCategory());
 		auction.setCategory(category);
 		
 		int id =  auctionRepository.save(auction).getId();
 		
-		Optional<FileAttachment> optionalFileAttachment = fileAttachmentRepository.findById(auctionVM.getAttachmentId());
+		Optional<FileAttachment> optionalFileAttachment = fileAttachmentRepository.findById(auctionRequest.getAttachmentId());
 
 		if(optionalFileAttachment.isPresent()) {
 			FileAttachment fileAttachment = optionalFileAttachment.get();
 			fileAttachment.setAuction(auction);
 			fileAttachmentRepository.save(fileAttachment);
 		}
-		
 		return id;
 	}
 
@@ -74,28 +67,17 @@ public class AuctionService {
 	}
 
 	public Auction findById(int id) {
-		Auction auction=  auctionRepository.findById(id);
-		if(auction == null) {
-			throw new NotFoundException();
-		}
-		return auction;
+		return	auctionRepository.findById(id).orElseThrow(NotFoundException::new);
 	}
 
 
-	public User getUserOfAuction(int id) {
-		String username = auctionRepository.usernameOfAuctionOwner(id);
-		return userService.getByUsername(username);
-	}
-
-
-	public List<Auction> getAuctions(long id) {
-		List<Integer> idList=auctionRepository.getProductIdsOfUser(id);
-	
-		if(idList.get(0)!=null) {
-			List<Auction> auctions = new ArrayList<Auction>();
+	public List<Auction> getUserAuctions(long id)  {
+		List<Integer> idList=auctionRepository.getProductIdsOfUser(id); // TODO: 9.10.2022 null dönebilir hata atması zorunlu mu 
+		
+		if(idList.get(0)!=null) { // TODO: 9.10.2022 list !=null try catch kullanılmalı mı buralarda? 
+			List<Auction> auctions = new ArrayList<>();
 			for(Integer idx: idList) {
-				
-				auctions.add(auctionRepository.findById(idx.intValue()));
+				auctions.add(auctionRepository.findById(idx).orElseThrow(NotFoundException::new) );
 			}
 			return auctions;
 		}else {
@@ -106,8 +88,9 @@ public class AuctionService {
 	@Scheduled(fixedRate = 10*1000)
 	public void updateAuction() {
 		List<Integer> ids = auctionRepository.getIdsBiddedAuctions();//if there is a bid in auction and if there don't have buyer yet
+		
 		for(Integer id : ids) {//update all auctions. Find auction - winner user - set winner user to auction.
-			Auction auction = auctionRepository.findById(id.intValue());
+			Auction auction = auctionRepository.findById(id).orElseThrow(NotFoundException::new); // TODO: 9.10.2022 exceptionsız çözlür mü 
 			int buyerID= bidRepository.findHighestBuyerId(auction.getId());
 			User user= userService.findById(buyerID);
 			auction.setBuyer(user);
@@ -117,14 +100,14 @@ public class AuctionService {
 						"You are Winner. Check the auction: http://localhost:3000/#/auction/"+auction.getId() ,
 						"You Won the Auction !!! ");
 			}catch(MailException e) {
-				System.out.println(e.toString());
+				e.printStackTrace();
 			}
 		}			
 	}
 
 
 	public List<Auction> getMyWonAuctions(long id) {
-		int myid=(int)id;
+		int myid=(int)id; // TODO: 9.10.2022 user id neden int e çevirildi
 		return auctionRepository.getMyWonAuctions( myid);
 	}
 

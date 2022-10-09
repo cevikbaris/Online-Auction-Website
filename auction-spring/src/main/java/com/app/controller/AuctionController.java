@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.AuctionDto;
-import com.app.dto.AuctionReturnDto;
-import com.app.dto.BidSubmitDto;
-import com.app.dto.BidSuccessDto;
+import com.app.dto.AuctionRequest;
+import com.app.dto.AuctionResponse;
+import com.app.dto.BidRequest;
+import com.app.dto.BidResponse;
 import com.app.entity.Auction;
 import com.app.entity.Bid;
 import com.app.entity.User;
@@ -46,38 +46,36 @@ public class AuctionController {
 	
 	
 	@PostMapping("/auction/{username}")
-	public int createAuction(@Valid @RequestBody AuctionDto auctionVM ,@PathVariable String username) {
+	public int createAuction(@Valid @RequestBody AuctionRequest auction , @PathVariable String username) {
 		
 		User user = userService.getByUsername(username);
-		return auctionService.save(auctionVM,user);
+		return auctionService.save(auction,user);
 		
 	}
 	
 	@GetMapping("/auction/{id}")
-	public AuctionReturnDto getAuction (@PathVariable int id) {
-		AuctionReturnDto auctionReturnVM =new AuctionReturnDto(auctionService.findById(id));
-		User user=auctionService.getUserOfAuction(id);
-		auctionReturnVM.setUsername(user.getUsername());
-		auctionReturnVM.setName(user.getName());
+	public AuctionResponse getAuction (@PathVariable int id) {
+		AuctionResponse auctionResponse =new AuctionResponse(auctionService.findById(id));
+		User user=userService.getUserOfAuction(id);
+		auctionResponse.setUsername(user.getUsername());
+		auctionResponse.setName(user.getName());
 		//auctionReturnVM.setCreator(user);
-		return auctionReturnVM;
+		return auctionResponse;
 	}
 	
 	@GetMapping("/auction")
-	public Page<AuctionReturnDto> getAuctions (Pageable page){
-		
+	public Page<AuctionResponse> getAuctions (Pageable page){
 		Page<Auction> auctions= auctionService.getAuctions(page);
-
-		return auctions.map(AuctionReturnDto::new);
+		return auctions.map(AuctionResponse::new);
 	}
 	
 	
 	@GetMapping("/category/auction/{categoryName}")
-	public Page<AuctionReturnDto> getAuctionsByCategory (Pageable page,@PathVariable("categoryName") String categoryName){
+	public Page<AuctionResponse> getAuctionsByCategory (Pageable page, @PathVariable("categoryName") String categoryName){
 		
 
 		List<Integer> auctionIds= categoryRepository.getAuctionsByCategoryName(categoryName);
-		List<Auction> auctions = new ArrayList<Auction>() ;
+		List<Auction> auctions = new ArrayList<>() ;
 		
 		if(auctionIds.isEmpty()) {
 			return null;
@@ -85,35 +83,39 @@ public class AuctionController {
 			for(Integer id : auctionIds) {
 				auctions.add(auctionService.findById(id));
 			}
-			List<AuctionReturnDto> auctionReturnVMs = new ArrayList<AuctionReturnDto>();
+			List<AuctionResponse> auctionReturnVMs = new ArrayList<>();
 			if(!auctions.isEmpty()) {
 				for(Auction auction : auctions) {
-					auctionReturnVMs.add(new AuctionReturnDto(auction));
+					auctionReturnVMs.add(new AuctionResponse(auction));
 				}
 			}
-			Page<AuctionReturnDto> auctionReturnVM = new PageImpl<>(auctionReturnVMs);
+			Page<AuctionResponse> auctionReturnVM = new PageImpl<>(auctionReturnVMs);
 			return auctionReturnVM;
 		}
 
 	}
 	
 	@GetMapping("/auction/user/{username}")
-	public Page<AuctionReturnDto> getAuctionOfUser (@PathVariable String username){	
+	public Page<AuctionResponse> getAuctionOfUser (@PathVariable String username){
 		
 		User user =userService.getByUsername(username);
-		List<Auction> auctions = auctionService.getAuctions(user.getId());
+		List<Auction> auctions = auctionService.getUserAuctions(user.getId());
 
-		List<AuctionReturnDto> auctionReturnVMs = new ArrayList<AuctionReturnDto>();
+		List<AuctionResponse> auctionResponseList = new ArrayList<>();
+
+		// TODO: 9.10.2022 bu stream kullanımı doğru mu test et
+		//auctionResponseList= auctions.stream().map(AuctionResponse::new).collect(Collectors.toList());
+
 		for(Auction auction : auctions) {
-			auctionReturnVMs.add(new AuctionReturnDto(auction));
+			auctionResponseList.add(new AuctionResponse(auction));
 		}
-		Page<AuctionReturnDto> auctionReturnVM = new PageImpl<>(auctionReturnVMs);
-		return auctionReturnVM;
+
+		return new PageImpl<>(auctionResponseList);
 	}
 	
 	
 	@PostMapping("/auction/bid")
-	BidSuccessDto createBid(@RequestBody BidSubmitDto bid) {
+	BidResponse createBid(@RequestBody BidRequest bid) {
 		
 		User user = userService.getByUsername(bid.getBuyerUsername());
 		Auction auction = auctionService.findById(bid.getAuctionID());
@@ -122,18 +124,19 @@ public class AuctionController {
 		newBid.setBidder(user);
 		newBid.setPrice(bid.getPrice());
 		newBid.setBidTime(bid.getBidTime());
+
 		try {
 			bidRepository.save(newBid);
-			auction.setStartPrice(bid.getPrice());
+			auction.setPrice(bid.getPrice());
 			auctionService.save(auction);
 		}catch (Exception e) {//if same price trying to save throw exception
 			System.out.println(e.toString());
 		}
-		return new BidSuccessDto(bid.getPrice(),user.getName(),bid.getBuyerUsername());
+		return new BidResponse(bid.getPrice(),user.getName(),bid.getBuyerUsername());
 	}
 	
 	@GetMapping("/bid/auction/{id}")
-	BidSuccessDto getBidsOfAuction(@PathVariable int id) {
+	BidResponse getBidsOfAuction(@PathVariable int id) {
 		Auction auction =auctionService.findById(id); 
 		List<Bid> bids = auction.getBids();
 		if(bids.isEmpty()) {
@@ -148,26 +151,26 @@ public class AuctionController {
 		Bid maxBid = bidRepository.findByPrice(max,id);
 		User user= maxBid.getBidder();
 		
-		return new BidSuccessDto(maxBid.getPrice(), user.getName(), user.getUsername());
+		return new BidResponse(maxBid.getPrice(), user.getName(), user.getUsername());
 	}
 	
 	@GetMapping("/auction/mybids/{username}")
-	List<AuctionReturnDto> getMyBids (@PathVariable String username) {
+	List<AuctionResponse> getMyBids (@PathVariable String username) {
 		User myUser = userService.getByUsername(username);
 		
 		List<Auction> auctions = auctionService.getMyWonAuctions(myUser.getId());
 		if(auctions.isEmpty()) {
 			return null; 
 		}
-		List<AuctionReturnDto> auctionReturnVM = new ArrayList<AuctionReturnDto>();
+		List<AuctionResponse> auctionReturnVM = new ArrayList<AuctionResponse>();
 		for(Auction auction : auctions) {
-			auctionReturnVM.add(new AuctionReturnDto(auction));
+			auctionReturnVM.add(new AuctionResponse(auction));
 		}
 		return auctionReturnVM;
 	}
 	
 	@PutMapping("/auction/buy-now")
-	BidSuccessDto buyAuctionNow (@RequestBody BidSubmitDto bidSubmitVM) {
+	BidResponse buyAuctionNow (@RequestBody BidRequest bidSubmitVM) {
 		
 		User buyer = userService.getByUsername(bidSubmitVM.getBuyerUsername());
 		Auction auction = auctionService.findById(bidSubmitVM.getAuctionID());
@@ -180,7 +183,7 @@ public class AuctionController {
 		newBid.setBidTime(bidSubmitVM.getBidTime());
 		bidRepository.save(newBid);
 		
-		return new BidSuccessDto(bidSubmitVM.getPrice(), buyer.getName(), buyer.getUsername());
+		return new BidResponse(bidSubmitVM.getPrice(), buyer.getName(), buyer.getUsername());
 	}
 		
 }

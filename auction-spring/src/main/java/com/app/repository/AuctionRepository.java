@@ -15,8 +15,6 @@ import com.app.entity.Auction;
 
 @Repository
 public interface AuctionRepository extends JpaRepository<Auction, Integer> {
-		
-	Auction findById(int id);
 
 	@Query(value=" SELECT username FROM auction_table \r\n"
 			+ "LEFT JOIN user ON auction_table.creator_id=user.id \r\n"
