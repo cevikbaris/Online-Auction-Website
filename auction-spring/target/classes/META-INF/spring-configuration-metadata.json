@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "",
+      "type": "com.app.configuration.AppConfiguration",
+      "sourceType": "com.app.configuration.AppConfiguration"
+    }
+  ],
+  "properties": [
+    {
+      "name": "attachment-storage",
+      "type": "java.lang.String",
+      "sourceType": "com.app.configuration.AppConfiguration"
+    },
+    {
+      "name": "identity-storage",
+      "type": "java.lang.String",
+      "sourceType": "com.app.configuration.AppConfiguration"
+    },
+    {
+      "name": "profile-storage",
+      "type": "java.lang.String",
+      "sourceType": "com.app.configuration.AppConfiguration"
+    },
+    {
+      "name": "upload-path",
+      "type": "java.lang.String",
+      "sourceType": "com.app.configuration.AppConfiguration"
+    }
+  ],
+  "hints": []
+}
