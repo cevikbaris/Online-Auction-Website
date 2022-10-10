@@ -72,9 +72,9 @@ public class AuctionService {
 
 
 	public List<Auction> getUserAuctions(long id)  {
-		List<Integer> idList=auctionRepository.getProductIdsOfUser(id); // TODO: 9.10.2022 null dönebilir hata atması zorunlu mu 
+		List<Integer> idList=auctionRepository.getProductIdsOfUser(id);
 		
-		if(idList.get(0)!=null) { // TODO: 9.10.2022 list !=null try catch kullanılmalı mı buralarda? 
+		if(idList.get(0)!=null) {
 			List<Auction> auctions = new ArrayList<>();
 			for(Integer idx: idList) {
 				auctions.add(auctionRepository.findById(idx).orElseThrow(NotFoundException::new) );

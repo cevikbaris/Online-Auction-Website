@@ -23,7 +23,7 @@ import com.app.service.FileService;
 import com.app.service.UserService;
 
 @RestController
-public class FileController {
+public class IdentityController {
 	
 	@Autowired
 	FileService	fileService;
@@ -53,7 +53,7 @@ public class FileController {
 			IdentityFile idFile = idFileOptional.get();
 			idFile.setIdNumber(identityVM.getIdNumber());
 			
-			idFile.setUser_id(user.getId());	
+			idFile.setUser(user);
 			try {				
 				IdentityFile idReturn = identityFileRepository.save(idFile);
 				return ResponseEntity.ok().body(idReturn);

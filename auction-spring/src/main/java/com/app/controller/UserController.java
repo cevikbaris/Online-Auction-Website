@@ -53,7 +53,6 @@ public class UserController {
 	@PutMapping("/users/update/{userid}")
 	@Secured("ROLE_ADMIN")
 	ResponseEntity<?> approveUser(@PathVariable long userid) {
-		// TODO: 9.10.2022 try catch gerekli mi
 		try{
 			userService.updateUserIsApproved(userid);
 			userService.deleteIdentityByUserId(userid);

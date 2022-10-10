@@ -3,7 +3,7 @@ package com.app.model;
 import lombok.Data;
 
 @Data
-public class AutoBidDto {
+public class AutoBidRequest {
 	
 	private int maxBidLimit;
 	

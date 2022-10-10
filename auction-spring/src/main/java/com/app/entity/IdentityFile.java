@@ -20,8 +20,9 @@ public class IdentityFile {
 	@Column(unique=true)
 	private Long idNumber;
 	
-	@Column(unique=true)
-	private Long user_id;
+	@OneToOne()
+	@JoinColumn(name = "user_id")
+	private User user;
 	
     @Column(nullable = false)
 	private String imageId;

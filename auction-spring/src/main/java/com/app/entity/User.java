@@ -58,7 +58,14 @@ public class User  implements UserDetails{
 	@ToString.Exclude
 	private List<Auction> biddedProducts;
 	
-	
+	@OneToOne(mappedBy="user",cascade = CascadeType.ALL)
+	@JsonIgnore
+	private IdentityFile identityFile;
+
+	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+	@JsonIgnore
+	private AutomaticBid automaticBid;
+
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "users_roles", 

@@ -1,11 +1,8 @@
 package com.app.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-import com.app.model.AutoBidDto;
+import com.app.model.AutoBidRequest;
 
 import lombok.Data;
 
@@ -20,13 +17,15 @@ public class AutomaticBid {
 	private int maxBidLimit;
 	
 	private int auctionId;
-	
-	private long userId;
+
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 	
 	public AutomaticBid() {
 		
 	}
-	public AutomaticBid(AutoBidDto autoBidVM) {
+	public AutomaticBid(AutoBidRequest autoBidVM) {
 		this.maxBidLimit=autoBidVM.getMaxBidLimit();
 		this.auctionId=autoBidVM.getAuctionId();
 	}

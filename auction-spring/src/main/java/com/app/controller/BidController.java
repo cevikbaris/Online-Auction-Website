@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.model.AutoBidDto;
+import com.app.model.AutoBidRequest;
 import com.app.entity.AutomaticBid;
 import com.app.entity.User;
 import com.app.repository.AutomaticBidRepository;
@@ -26,12 +26,11 @@ public class BidController {
 	UserService userService;
 	
 	@PostMapping("/auto/bid")
-	GenericResponse createAutoBidding (@RequestBody AutoBidDto autoBidVM) {
-		
-		AutomaticBid automaticBid = new AutomaticBid(autoBidVM);
-		User user = userService.getByUsername(autoBidVM.getUsername());
-		automaticBid.setUserId(user.getId());		
-		AutomaticBid retruned = automaticBidRepository.save(automaticBid);
+	GenericResponse createAutoBidding (@RequestBody AutoBidRequest autoBid) {
+		AutomaticBid automaticBid = new AutomaticBid(autoBid);
+		User user = userService.getByUsername(autoBid.getUsername());
+		automaticBid.setUser(user);
+		automaticBidRepository.save(automaticBid);
 		return new GenericResponse("Automatic bidding creating is success.");
 	}
 	
